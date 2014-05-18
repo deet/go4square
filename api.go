@@ -13,12 +13,14 @@ const (
 type Api struct {
 	clientId     string
 	clientSecret string
+	apiVersion   string
 }
 
-func NewApi(clientId string, clientSecret string) *Api {
+func NewApi(clientId string, clientSecret string, apiVersion string) *Api {
 	api := new(Api)
 	api.clientId = clientId
 	api.clientSecret = clientSecret
+	api.apiVersion = apiVersion
 	return api
 }
 
@@ -42,5 +44,6 @@ func (self *Api) clientParams() url.Values {
 	params := url.Values{}
 	params.Set("client_id", self.clientId)
 	params.Set("client_secret", self.clientSecret)
+	params.Set("v", self.apiVersion)
 	return params
 }
