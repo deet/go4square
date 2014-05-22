@@ -35,7 +35,14 @@ func (self *Api) Explore(req ExploreRequest) (resp ExploreResponse) {
 	r, _ := http.Get(EXPLORE_URL + params.Encode())
 	defer r.Body.Close()
 
+	error := new(ApiError)
 	dec := json.NewDecoder(r.Body)
+	dec.Decode(&error)
+
+	if error.Meta.Code != 200 {
+		//Error occurred
+	}
+
 	dec.Decode(&resp)
 	return resp
 }
