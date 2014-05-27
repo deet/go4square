@@ -28,9 +28,9 @@ func TestExploreLatLng(t *testing.T) {
 	assert.NotEmpty(t, resp.GetVenues())
 }
 
-func getApi() *Api {
+func getApi() *Client {
 	config := getClientConfig()
-	return NewApi(config.ClientId, config.ClientSecret)
+	return New(config.ClientId, config.ClientSecret)
 }
 
 func getClientConfig() ClientConfig {
