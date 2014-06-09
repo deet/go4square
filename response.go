@@ -1,5 +1,7 @@
 package foursquare
 
+import "fmt"
+
 // https://developer.foursquare.com/docs/responses/venue
 type Venue struct {
 	Id         string
@@ -29,8 +31,23 @@ type Category struct {
 }
 
 // https://developer.foursquare.com/overview/responses
+
+type SyntaxError struct {
+    msg    string // description of error
+    Offset int64  // error occurred after reading Offset bytes
+}
+
 type ApiError struct {
 	Meta		MetaInfo
+	msg			string
+}
+
+func (e *ApiError) Error() string { 
+	if e.msg == "" {
+		return e.msg
+	} else {
+		return fmt.Sprintf("Api error (%d): %s", e.Meta.Code, e.Meta.ErrorDetail)
+	}
 }
 
 type MetaInfo struct {

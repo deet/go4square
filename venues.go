@@ -12,7 +12,7 @@ const (
 	EXPLORE_URL = BASE_URL + "/venues/explore?"
 )
 
-func (self *Client) Explore(values url.Values) (resp *ExploreResponse, err error) {
+func (self *Client) Explore(values url.Values) (resp *ExploreResponse, error *ApiError) {
 
 	values = self.appendClientParams(values)
 
@@ -20,18 +20,20 @@ func (self *Client) Explore(values url.Values) (resp *ExploreResponse, err error
 	defer r.Body.Close()
 
 	if err != nil {
-		return nil, fmt.Errorf("Error during get: %s", err.Error)
+		error.msg = fmt.Sprintf("Error during get: %s", err.Error)
+		return nil, error
 	}
 
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		return nil, fmt.Errorf("Error reading stream: %s", err.Error)
+		error.msg = fmt.Sprintf("Error reading stream: %s", err.Error)
+		return nil, error
 	}
 
-	apiError := self.apiError(body)
+	error = self.apiError(body)
 
-	if  apiError.Meta.Code != 200 {
-		return nil, fmt.Errorf("Api error (%s): %s", apiError.Meta.Code, apiError.Meta.ErrorDetail)
+	if  error.Meta.Code != 200 {
+		return nil, error
 	}
 
 	resp = new(ExploreResponse)
