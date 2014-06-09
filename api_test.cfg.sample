@@ -1,4 +1,5 @@
 {
     "ClientId": "INSERT_YOUR_CLIENT_ID_HERE",
-    "ClientSecret": "INSERT_YOUR_CLIENT_SECRET_HERE"
+    "ClientSecret": "INSERT_YOUR_CLIENT_SECRET_HERE",
+    "ClientVersion": "INSERT_YOUR_CLIENT_VERSION_HERE"
 }

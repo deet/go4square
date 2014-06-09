@@ -31,7 +31,7 @@ func (self *Client) Explore(values url.Values) (resp *ExploreResponse, err error
 	apiError := self.apiError(body)
 
 	if  apiError.Meta.Code != 200 {
-		return nil, fmt.Errorf("Api error: %s", apiError.Meta.ErrorDetail)
+		return nil, fmt.Errorf("Api error (%s): %s", apiError.Meta.Code, apiError.Meta.ErrorDetail)
 	}
 
 	resp = new(ExploreResponse)
