@@ -73,7 +73,7 @@ type ExploreItem struct {
 	Venue Venue
 }
 
-func (resp *ExploreResponse) GetVenues() (venues []Venue) {
+func (resp *ExploreResponse) Venues() (venues []Venue) {
 	for _, group := range resp.Response.Groups {
 		for _, item := range group.Items {
 			venues = append(venues, item.Venue)
