@@ -3,6 +3,7 @@ package foursquare
 import (
 	"encoding/json"
 	"io/ioutil"
+	"os"
 )
 
 type ClientConfig struct {
@@ -20,8 +21,17 @@ func GetApi() *Client {
 
 func getClientConfig() ClientConfig {
 	if CONFIG.ClientId == "" {
-		r, _ := ioutil.ReadFile("api_test.cfg")
-		json.Unmarshal(r, &CONFIG)
+		r, error := ioutil.ReadFile("api_test.cfg")
+		if error != nil {
+			//File doesn't exist, let's try environment variables (works well for travis)
+			CONFIG = *new(ClientConfig)
+			CONFIG.ClientId = os.Getenv("FOURSQUARE_CLIENT_ID")
+			CONFIG.ClientSecret = os.Getenv("FOURSQUARE_CLIENT_SECRET")
+			CONFIG.ClientVersion = os.Getenv("FOURSQUARE_CLIENT_VERSION")
+		} else {
+			// No error, the file exists
+			json.Unmarshal(r, &CONFIG)
+		}
 	}
 	return CONFIG
 }
