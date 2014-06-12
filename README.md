@@ -10,8 +10,6 @@ Example
 package main
 
 import (
-        "net/http"
-
         "github.com/rfsbraz/go4square"
 )
 
