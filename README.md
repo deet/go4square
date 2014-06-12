@@ -1,4 +1,4 @@
-go4square[![GoDoc](https://godoc.org/github.com/rfsbraz/go4square?status.png)](https://godoc.org/github.com/rfsbraz/go4square) [![Build Status](https://travis-ci.org/rfsbraz/go4square.svg)](https://travis-ci.org/rfsbraz/go4square)
+go4square[![GoDoc](https://godoc.org/github.com/rfsbraz/go4square?status.png)](https://godoc.org/github.com/rfsbraz/go4square) [![Build Status](https://travis-ci.org/rfsbraz/go4square.svg?branch=master)](https://travis-ci.org/rfsbraz/go4square)
 =========
 
 Go wrapper for the foursquare v2 API
