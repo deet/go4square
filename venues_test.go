@@ -27,7 +27,7 @@ func TestNoParams(t *testing.T) {
 // Test explore method by passing a latitude and longitude arguments
 func TestExploreLatLng(t *testing.T) {
 	api := GetApi()
-	resp, error := api.Explore(url.Values{"ll": {"44.3,37.2"}})
+	resp, error := api.Explore(url.Values{"ll": {"40.7,-74"}})
 	assert.Nil(t, error)
 	assert.NotNil(t, resp)
 	assert.NotEmpty(t, resp.Venues())
