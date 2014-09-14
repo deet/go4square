@@ -23,6 +23,13 @@ func main() {
 	} else {
 		// Enjoy the venues
 	}
+
+	categoryResp, err := api.Categories()
+	if err != nil {
+		// Handle the error
+	} else {
+		// Enjoy the categories
+	}
 }
 ```
 
@@ -30,6 +37,8 @@ Implemented
 --------
 
 * Nothing just yet, but the venue endpoint will be the first to be complete.
+* Categories response, excluding URLs to icons.
+* Categories from Venues response may not have sub categories populated.
 
 TODO
 -----------

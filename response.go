@@ -28,21 +28,22 @@ type Category struct {
 	PluralName string
 	ShortName  string
 	Primary    bool
+	Categories []Category
 }
 
 // https://developer.foursquare.com/overview/responses
 
 type SyntaxError struct {
-    msg    string // description of error
-    Offset int64  // error occurred after reading Offset bytes
+	msg    string // description of error
+	Offset int64  // error occurred after reading Offset bytes
 }
 
 type ApiError struct {
-	Meta		MetaInfo
-	msg			string
+	Meta MetaInfo
+	msg  string
 }
 
-func (e *ApiError) Error() string { 
+func (e *ApiError) Error() string {
 	if e.msg == "" {
 		return e.msg
 	} else {
@@ -51,9 +52,9 @@ func (e *ApiError) Error() string {
 }
 
 type MetaInfo struct {
-	Code 		int32
-	ErrorDetail	string
-	ErrorType	string
+	Code        int32
+	ErrorDetail string
+	ErrorType   string
 }
 
 // https://developer.foursquare.com/docs/venues/explore
@@ -80,4 +81,12 @@ func (resp *ExploreResponse) Venues() (venues []Venue) {
 		}
 	}
 	return venues
+}
+
+type CategoriesBody struct {
+	Categories []Category
+}
+
+type CategoriesResponse struct {
+	Response CategoriesBody
 }
