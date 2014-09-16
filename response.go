@@ -83,6 +83,18 @@ func (resp *ExploreResponse) Venues() (venues []Venue) {
 	return venues
 }
 
+type SearchResponse struct {
+	Response SearchBody
+}
+
+type SearchBody struct {
+	Venues []Venue
+}
+
+func (resp *SearchResponse) Venues() (venues []Venue) {
+	return resp.Response.Venues
+}
+
 type CategoriesBody struct {
 	Categories []Category
 }
