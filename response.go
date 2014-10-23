@@ -8,18 +8,21 @@ type Venue struct {
 	Name       string
 	Location   Location
 	Categories []Category
+	Verified   bool
+	Stats      Stats
 }
 
 type Location struct {
-	Address     string
-	CrossStreet string
-	City        string
-	State       string
-	PostalCode  string
-	Country     string
-	Lat         float64
-	Lng         float64
-	Distance    float64
+	Address          string
+	CrossStreet      string
+	City             string
+	State            string
+	PostalCode       string
+	Country          string
+	Lat              float64
+	Lng              float64
+	Distance         float64
+	FormattedAddress []string
 }
 
 type Category struct {
@@ -29,6 +32,12 @@ type Category struct {
 	ShortName  string
 	Primary    bool
 	Categories []Category
+}
+
+type Stats struct {
+	CheckinsCount int
+	UsersCount    int
+	TipCount      int
 }
 
 // https://developer.foursquare.com/overview/responses
